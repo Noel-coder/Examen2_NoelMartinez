@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -53,19 +54,19 @@ public class principal extends javax.swing.JFrame {
         jd_enviarsolicitud = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        tf_usuarioSolicitud = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jl_amigos = new javax.swing.JList<>();
         jButton4 = new javax.swing.JButton();
         bt_enviarsolicitud = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cb_solicitudAmistad = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        bt_iniciarSesion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -206,10 +207,15 @@ public class principal extends javax.swing.JFrame {
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        jList1.setModel(new DefaultListModel());
-        jScrollPane1.setViewportView(jList1);
+        jl_amigos.setModel(new DefaultListModel());
+        jScrollPane1.setViewportView(jl_amigos);
 
         jButton4.setText("Listar mis amigos");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         bt_enviarsolicitud.setText("Enviar");
         bt_enviarsolicitud.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -218,7 +224,7 @@ public class principal extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solicitudes de amistad" }));
+        cb_solicitudAmistad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solicitudes de amistad" }));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -234,23 +240,23 @@ public class principal extends javax.swing.JFrame {
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_usuarioSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(15, 15, 15)
                                 .addComponent(bt_enviarsolicitud))))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton4)
-                        .addContainerGap(53, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                        .addComponent(cb_solicitudAmistad, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
         jPanel4Layout.setVerticalGroup(
@@ -264,20 +270,20 @@ public class principal extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tf_usuarioSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(40, 40, 40)
                         .addComponent(bt_enviarsolicitud)
                         .addGap(18, 18, 18)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(132, 132, 132)
-                        .addComponent(jButton4)))
-                .addContainerGap(68, Short.MAX_VALUE))
+                        .addComponent(cb_solicitudAmistad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(139, 139, 139)
+                        .addComponent(jButton4))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jd_enviarsolicitudLayout = new javax.swing.GroupLayout(jd_enviarsolicitud.getContentPane());
@@ -298,12 +304,12 @@ public class principal extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jButton1.setText("Registrarse");
 
-        jButton2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jButton2.setText("Iniciar Sesion");
-        jButton2.setEnabled(false);
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        bt_iniciarSesion.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        bt_iniciarSesion.setText("Iniciar Sesion");
+        bt_iniciarSesion.setEnabled(false);
+        bt_iniciarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                bt_iniciarSesionMouseClicked(evt);
             }
         });
 
@@ -344,7 +350,7 @@ public class principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(bt_iniciarSesion)
                 .addGap(22, 22, 22))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(367, Short.MAX_VALUE)
@@ -389,7 +395,7 @@ public class principal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton1)
-                        .addComponent(jButton2))
+                        .addComponent(bt_iniciarSesion))
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -442,16 +448,31 @@ public class principal extends javax.swing.JFrame {
         String contralog = tf_contraing.getText();
         if (usuariolog.equals(usuarioReg) && contralog.equals(ContraReg)) {
             JOptionPane.showMessageDialog(this, "Se ha logeado con exito!");
+            jd_login.setModal(false);
+            jd_login.pack();
+            jd_login.setVisible(false);
+            
+            jd_listaamaigos.setModal(true);
+            jd_listaamaigos.pack();
+            jd_listaamaigos.setLocationRelativeTo(jMenu1);
+            jd_listaamaigos.setVisible(true);
         }else{
             JOptionPane.showMessageDialog(this, "Usuario o Contraseña es incorrecta!");
         }
     }//GEN-LAST:event_bt_iniciarSesion1MouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        if (tf_UsuarioRegistro.getText().isEmpty()) {
+    private void bt_iniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_iniciarSesionMouseClicked
+        if (binarioGuardarUsuario == null) {
             JOptionPane.showMessageDialog(this, "Debe registrarse primero!");
+        }else{
+            this.setVisible(false);
+            
+            jd_login.setModal(true);
+            jd_login.pack();
+            jd_login.setLocationRelativeTo(jMenu1);
+            jd_login.setVisible(true);
         }
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_bt_iniciarSesionMouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         String Usuario = tf_UsuarioRegistro.getText();
@@ -469,6 +490,11 @@ public class principal extends javax.swing.JFrame {
         } catch (Exception e) {
         }
         JOptionPane.showMessageDialog(this, "Se registro con exito");
+        bt_iniciarSesion.setEnabled(true);
+        tf_nombreRegistro.setText("");
+        tf_apellidoRegistro.setText("");
+        tf_numtelefonoReg.setText("");
+        sp_calidadConexion.setValue(0);
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -479,8 +505,23 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void bt_enviarsolicitudMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_enviarsolicitudMouseClicked
-        
+        String usuarioelegido = tf_usuarioSolicitud.getText();
+
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_solicitudAmistad.getModel();
+        modelo.addElement(usuarioelegido);
+        cb_solicitudAmistad.setModel(modelo);
+        JOptionPane.showMessageDialog(jMenu1, "La solicitud se envio con exito!");
     }//GEN-LAST:event_bt_enviarsolicitudMouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        DefaultListModel modelo
+                = (DefaultListModel) jl_amigos.getModel();
+
+        
+        if (cb_solicitudAmistad.getSelectedIndex() >= 0) {
+            modelo.addElement(cb_solicitudAmistad.getSelectedItem().toString());
+        }
+    }//GEN-LAST:event_jButton4MouseClicked
     
     public void escribirUsuarioGuardado() {
         FileOutputStream fw = null;
@@ -564,12 +605,12 @@ public class principal extends javax.swing.JFrame {
     ArrayList<Usuarios> listaUsuariosGuardados = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_enviarsolicitud;
+    private javax.swing.JButton bt_iniciarSesion;
     private javax.swing.JButton bt_iniciarSesion1;
+    private javax.swing.JComboBox<String> cb_solicitudAmistad;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -583,7 +624,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -594,10 +634,10 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JDialog jd_enviarsolicitud;
     private javax.swing.JDialog jd_listaamaigos;
     private javax.swing.JDialog jd_login;
+    private javax.swing.JList<String> jl_amigos;
     private javax.swing.JPasswordField jp_contraseñarEGISTRO;
     private javax.swing.JLabel lb_usuario1;
     private javax.swing.JSpinner sp_calidadConexion;
@@ -607,5 +647,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_nombreRegistro;
     private javax.swing.JTextField tf_numtelefonoReg;
     private javax.swing.JTextField tf_usuarioIng;
+    private javax.swing.JTextField tf_usuarioSolicitud;
     // End of variables declaration//GEN-END:variables
 }
