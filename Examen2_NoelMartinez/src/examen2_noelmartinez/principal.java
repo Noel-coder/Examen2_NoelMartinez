@@ -679,7 +679,7 @@ public class principal extends javax.swing.JFrame {
                         = new DefaultMutableTreeNode(amigos);
                 DefaultMutableTreeNode p
                         = new DefaultMutableTreeNode(
-                               // ((Usuarios)modeloLISTA.get(jl_amigos.getSelectedIndex())).getNombreUsuario();
+                               ((Usuarios)modeloLISTA.get(jl_amigos.getSelectedIndex())).getNombreUsuario());
                 n.add(p);
                 raiz.add(n);
             }  // fin if          
@@ -731,7 +731,11 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        HiloMensaje hm = new HiloMensaje(jpb_mensaje, WIDTH, rootPaneCheckingEnabled, rootPaneCheckingEnabled);
+        DefaultListModel modeloLISTA
+                    = (DefaultListModel) jl_amigos.getModel();
+        int tiempo = ((Usuarios)modeloLISTA.get(jl_amigos.getSelectedIndex())).getCalidadWifi();
+        HiloMensaje hm = new HiloMensaje(jpb_mensaje,tiempo);
+        hm.start();
     }//GEN-LAST:event_jButton2MouseClicked
 
     public void escribirUsuarioGuardado() {
