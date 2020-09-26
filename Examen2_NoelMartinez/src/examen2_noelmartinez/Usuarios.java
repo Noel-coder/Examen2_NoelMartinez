@@ -14,6 +14,7 @@ public class Usuarios extends Persona implements Serializable {
     private String contraseña;
     private ArrayList<Chats> listaChats = new ArrayList();
     private ArrayList<Usuarios> listaAmigos = new ArrayList();
+    private int CalidadWifi;
     private ArrayList<Solicitudes> listaSolicitudes = new ArrayList();
 
     private static final long SerialVersionUID = 777L;
@@ -21,11 +22,12 @@ public class Usuarios extends Persona implements Serializable {
     public Usuarios(String nombre, String apellido, String NumeroTelefono) {
         super(nombre, apellido, NumeroTelefono);
     }
-    
-    public Usuarios(String NombreUsuario, String contraseña, String nombre, String apellido, String NumeroTelefono) {
+
+    public Usuarios(String NombreUsuario, String contraseña, int CalidadWifi, String nombre, String apellido, String NumeroTelefono) {
         super(nombre, apellido, NumeroTelefono);
         this.NombreUsuario = NombreUsuario;
         this.contraseña = contraseña;
+        this.CalidadWifi = CalidadWifi;
     }
 
     public ArrayList<Solicitudes> getListaSolicitudes() {
@@ -68,9 +70,24 @@ public class Usuarios extends Persona implements Serializable {
         this.listaAmigos = listaAmigos;
     }
 
+    public int getCalidadWifi() {
+        return CalidadWifi;
+    }
+
+    public void setCalidadWifi(int CalidadWifi) {
+        this.CalidadWifi = CalidadWifi;
+    }
+    
+
     @Override
     public String toString() {
         return "Usuarios{" + "NombreUsuario=" + NombreUsuario + ", contrase\u00f1a=" + contraseña + ", listaChats=" + listaChats + ", listaAmigos=" + listaAmigos + '}';
     }
 
+    @Override
+    public int enviar(int calidadReceptor) {
+         return (int)((calidadReceptor * 0.6)+(this.CalidadWifi * 0.85));
+    }
+    
+    
 }

@@ -51,5 +51,6 @@ public abstract class Persona implements Serializable {
         return "Persona{" + "nombre=" + nombre + ", apellido=" + apellido + ", NumeroTelefono=" + NumeroTelefono + '}';
     }
     
-
+    public abstract int enviar(int CalidadReceptor);
+    
 }
